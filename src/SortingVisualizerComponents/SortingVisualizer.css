@@ -1,0 +1,36 @@
+.header {
+  background-color: aliceblue;
+  display: flex;
+  justify-content: space-around;
+  padding: 15px;
+}
+
+.header button {
+  background-color: lightgreen;
+  padding: 10px;
+  box-shadow: 0ch;
+  border-radius: 5px;
+  outline: none;
+  border: 1px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  cursor: pointer;
+  font-size: 30px;
+  font-weight: 200;
+  margin-top: 5px;
+}
+
+.array-bar {
+  width: 0.50%;
+  background-color: blue;
+  margin: 2px;
+}
+
+.array-container{
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-evenly;
+  margin: 3% 7.5% 5% 7.5%;
+}
