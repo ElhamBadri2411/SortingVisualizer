@@ -29,9 +29,6 @@ const SortingVisualizer = () => {
   const bubbleSort = () => {
     const animations = bubbleSortAlgorithm(array);
 
-    //const sortedArray = animations[2];
-    //const comparisons = animations[0];
-
     for (let i = 0; i < animations.length; i++) {
       const animation = animations[i];
       const arrayBars = document.getElementsByClassName("array-bar");
@@ -66,9 +63,53 @@ const SortingVisualizer = () => {
     }
   };
 
-  const insertionSort = () => {};
+  const insertionSort = () => {
+    const animations = insertionSortAlgorithm(array);
+    const animationSpeed = 10; //250 is good for slow setting and 25 bars, 350 bars and  1 for fast paced
+    for (var i = 0; i < animations.length; i++) {
+      const animation = animations[i];
+      const arrayBars = document.getElementsByClassName("array-bar");
+      let color = "red";
+      if (i % 3 !== 2) {
+        const [firstBar, secondBar] = animation;
 
-  const selectionSort = () => {};
+        if (i % 3 === 1) {
+          color = "blue";
+        } else {
+          color = "red";
+        }
+        setTimeout(() => {
+          if (animation[3] === true) {
+            arrayBars[animation[2]].style.backgroundColor = "green";
+          } else {
+            arrayBars[animation[2]].style.backgroundColor = "blue";
+          }
+          // this part is to check if we need to compare or to switch the comparison part
+          arrayBars[firstBar].style.backgroundColor = color;
+          arrayBars[secondBar].style.backgroundColor = color;
+        }, i * animationSpeed);
+      } else {
+        // this part happens if we need to switch 2 bars
+        const [firstBar, secondBar] = animation;
+        setTimeout(() => {
+          // this part is to check if we need to compare or to switch the comparison part
+          const firstBarHeight = arrayBars[firstBar].style.height;
+          const secondBarHeight = arrayBars[secondBar].style.height;
+          arrayBars[firstBar].style.height = secondBarHeight;
+          arrayBars[secondBar].style.height = firstBarHeight;
+        }, i * animationSpeed);
+      }
+    }
+    const arrayBars = document.getElementsByClassName("array-bar");
+    console.log( arrayBars[animations[i - 1][2]]);
+    setTimeout(() => {
+      arrayBars[animations[i - 1][2]].style.backgroundColor = "blue";
+    }, i * animationSpeed);
+  };
+
+  const selectionSort = (array) => {
+    const animations = selectionSortAlgorithm(array);
+  };
 
   return (
     <div>
