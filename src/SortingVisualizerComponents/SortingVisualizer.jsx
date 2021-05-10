@@ -18,7 +18,7 @@ const SortingVisualizer = () => {
 
   const resetArray = () => {
     let tempArray = [];
-    for (let i = 0; i < 250; i++) {
+    for (let i = 0; i < 350; i++) {
       tempArray.push(getRandomInt(5, 1000));
     }
 
@@ -30,28 +30,37 @@ const SortingVisualizer = () => {
 
     //const sortedArray = animations[2];
     //const comparisons = animations[0];
-    const swaps = animations[1];
 
-    for (let i = 0; i < swaps.length; i++) {
-      const comparison = swaps[i];
+    for (let i = 0; i < animations.length; i++) {
+      const animation = animations[i];
       const arrayBars = document.getElementsByClassName("array-bar");
-      const [firstBar, secondBar] = comparison;
-      const animationSpeed = 10;
-      if (false) {
+      const animationSpeed = 0.5; //250 is good for slow setting and 25 bars, 350 bars and  1 for fast paced
+      let color = 'red';
+      if (i % 3 !== 2) {
+        const [firstBar, secondBar] = animation;
+
+        if(i % 3 === 1){
+          color = "blue";
+        }else{
+          color = "red";
+        }
         setTimeout(() => {
           // this part is to check if we need to compare or to switch the comparison part
-          arrayBars[firstBar].style.backgroundColor = "blue";
-          arrayBars[secondBar].style.backgroundColor = "blue";
-        }, i * 5);
+          arrayBars[firstBar].style.backgroundColor = color;
+          arrayBars[secondBar].style.backgroundColor = color;
+        }, i * (animationSpeed));
       } else {
         // this part happens if we need to switch 2 bars
-        setTimeout(() => {
-          // this part is to check if we need to compare or to switch the comparison part
-          const firstBarHeight = arrayBars[firstBar].style.height;
-          const secondBarHeight = arrayBars[secondBar].style.height;
-          arrayBars[firstBar].style.height = secondBarHeight;
-          arrayBars[secondBar].style.height = firstBarHeight;
-        }, i * animationSpeed);
+        if (animation !== false) {
+          const [firstBar, secondBar] = animation;
+          setTimeout(() => {
+            // this part is to check if we need to compare or to switch the comparison part
+            const firstBarHeight = arrayBars[firstBar].style.height;
+            const secondBarHeight = arrayBars[secondBar].style.height;
+            arrayBars[firstBar].style.height = secondBarHeight;
+            arrayBars[secondBar].style.height = firstBarHeight;
+          }, i * animationSpeed);
+        }
       }
     }
   };

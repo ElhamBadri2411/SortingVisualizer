@@ -23,9 +23,9 @@
 }
 
 .array-bar {
-  width: 0.50%;
+  width: 100%;
   background-color: blue;
-  margin: 2px;
+  margin: 1px;
 }
 
 .array-container{
