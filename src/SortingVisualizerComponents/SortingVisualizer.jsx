@@ -4,7 +4,8 @@ import { useState } from "react";
 import Header from "./Header.jsx";
 import {
   bubbleSortAlgorithm,
-  mergeSortAlgorithm,
+  insertionSortAlgorithm,
+  selectionSortAlgorithm,
 } from "./sortingAlgorithims.js";
 
 const SortingVisualizer = () => {
@@ -35,20 +36,20 @@ const SortingVisualizer = () => {
       const animation = animations[i];
       const arrayBars = document.getElementsByClassName("array-bar");
       const animationSpeed = 0.5; //250 is good for slow setting and 25 bars, 350 bars and  1 for fast paced
-      let color = 'red';
+      let color = "red";
       if (i % 3 !== 2) {
         const [firstBar, secondBar] = animation;
 
-        if(i % 3 === 1){
+        if (i % 3 === 1) {
           color = "blue";
-        }else{
+        } else {
           color = "red";
         }
         setTimeout(() => {
           // this part is to check if we need to compare or to switch the comparison part
           arrayBars[firstBar].style.backgroundColor = color;
           arrayBars[secondBar].style.backgroundColor = color;
-        }, i * (animationSpeed));
+        }, i * animationSpeed);
       } else {
         // this part happens if we need to switch 2 bars
         if (animation !== false) {
@@ -65,10 +66,9 @@ const SortingVisualizer = () => {
     }
   };
 
-  const mergeSort = () => {
-    let sortedArray = mergeSortAlgorithm(array);
-    setArray([...sortedArray]);
-  };
+  const inserstionSort = () => {};
+
+  const selectionSort = () => {};
 
   return (
     <div>
@@ -76,7 +76,8 @@ const SortingVisualizer = () => {
         resetArray={resetArray}
         array={array}
         bubbleSort={bubbleSort}
-        mergeSort={mergeSort}
+        selectionSort={selectionSort}
+        inserstionSort={inserstionSort}
       />
       <div className="array-container">
         {array.map((value, i) => (

@@ -20,30 +20,12 @@ const bubbleSortAlgorithm = (inputArray) => {
   return animations;
 };
 
-const mergeArrays = (a, b) => {
-  let c = [];
+const insertionSortAlgorithm = () => {
 
-  while (a.length && b.length) {
-    if (a[0] < b[0]) {
-      c.push(a.shift());
-    } else {
-      c.push(b.shift());
-    }
-  }
+}
 
-  return [...c, ...a, ...b];
-};
+const selectionSortAlgorithm = () => {
 
-const mergeSortAlgorithm = (inputArray) => {
-  if (inputArray.length < 2) return inputArray;
+}
 
-  const middle = Math.floor(inputArray.length / 2);
-  const inputArrayLeft = inputArray.slice(0, middle);
-  const inputArrayRight = inputArray.slice(middle, inputArray.length);
-  const sortedArrayLeft = mergeSortAlgorithm(inputArrayLeft);
-  const sortedArrayRight = mergeSortAlgorithm(inputArrayRight);
-
-  return mergeArrays(sortedArrayLeft, sortedArrayRight);
-};
-
-export { bubbleSortAlgorithm, mergeSortAlgorithm };
+export { bubbleSortAlgorithm, insertionSortAlgorithm, selectionSortAlgorithm };
