@@ -19,7 +19,7 @@ const SortingVisualizer = () => {
 
   const resetArray = () => {
     let tempArray = [];
-    for (let i = 0; i < 350; i++) {
+    for (let i = 0; i < 15; i++) {
       tempArray.push(getRandomInt(5, 1000));
     }
 
@@ -35,7 +35,7 @@ const SortingVisualizer = () => {
     for (let i = 0; i < animations.length; i++) {
       const animation = animations[i];
       const arrayBars = document.getElementsByClassName("array-bar");
-      const animationSpeed = 0.5; //250 is good for slow setting and 25 bars, 350 bars and  1 for fast paced
+      const animationSpeed = 250; //250 is good for slow setting and 25 bars, 350 bars and  1 for fast paced
       let color = "red";
       if (i % 3 !== 2) {
         const [firstBar, secondBar] = animation;
