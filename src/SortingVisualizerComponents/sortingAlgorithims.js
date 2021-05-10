@@ -20,12 +20,8 @@ const bubbleSortAlgorithm = (inputArray) => {
   return animations;
 };
 
-const insertionSortAlgorithm = () => {
+const insertionSortAlgorithm = () => {};
 
-}
-
-const selectionSortAlgorithm = () => {
-
-}
+const selectionSortAlgorithm = () => {};
 
 export { bubbleSortAlgorithm, insertionSortAlgorithm, selectionSortAlgorithm };

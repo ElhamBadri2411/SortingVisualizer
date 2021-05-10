@@ -22,6 +22,18 @@
   margin-top: 5px;
 }
 
+.header button:active{
+  transform: scale(0.95);
+  -webkit-transform: scale(0.95);
+  -moz-transform: scale(0.95);
+  -ms-transform: scale(0.95);
+  -o-transform: scale(0.95);
+}
+
+.header button:hover{
+  background-color: rgba(144, 238, 144, 0.301);
+}
+
 .array-bar {
   width: 100%;
   background-color: blue;

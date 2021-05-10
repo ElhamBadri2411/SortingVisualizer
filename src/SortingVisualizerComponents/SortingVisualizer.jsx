@@ -66,7 +66,7 @@ const SortingVisualizer = () => {
     }
   };
 
-  const inserstionSort = () => {};
+  const insertionSort = () => {};
 
   const selectionSort = () => {};
 
@@ -77,7 +77,7 @@ const SortingVisualizer = () => {
         array={array}
         bubbleSort={bubbleSort}
         selectionSort={selectionSort}
-        inserstionSort={inserstionSort}
+        insertionSort={insertionSort}
       />
       <div className="array-container">
         {array.map((value, i) => (
