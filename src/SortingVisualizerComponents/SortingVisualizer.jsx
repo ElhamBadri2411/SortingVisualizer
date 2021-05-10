@@ -24,15 +24,21 @@ const SortingVisualizer = () => {
     }
 
     setArray([...tempArray]);
+    const arrayBars = document.getElementsByClassName("array-bar");
+    for (let bar of arrayBars) {
+      console.log(bar);
+      bar.style.backgroundColor = "blue";
+    }
   };
 
   const bubbleSort = () => {
     const animations = bubbleSortAlgorithm(array);
+    const arrayBars = document.getElementsByClassName("array-bar");
+    const animationSpeed = 10; //250 is good for slow setting and 25 bars, 350 bars and  1 for fast paced
 
-    for (let i = 0; i < animations.length; i++) {
+    for (var i = 0; i < animations.length; i++) {
       const animation = animations[i];
-      const arrayBars = document.getElementsByClassName("array-bar");
-      const animationSpeed = 250; //250 is good for slow setting and 25 bars, 350 bars and  1 for fast paced
+
       let color = "red";
       if (i % 3 !== 2) {
         const [firstBar, secondBar] = animation;
@@ -61,6 +67,13 @@ const SortingVisualizer = () => {
         }
       }
     }
+
+    setTimeout(() => {
+      for (let bar of arrayBars) {
+        console.log(bar);
+        bar.style.backgroundColor = "purple";
+      }
+    }, i * animationSpeed);
   };
 
   const insertionSort = () => {
@@ -101,9 +114,11 @@ const SortingVisualizer = () => {
       }
     }
     const arrayBars = document.getElementsByClassName("array-bar");
-    console.log( arrayBars[animations[i - 1][2]]);
     setTimeout(() => {
-      arrayBars[animations[i - 1][2]].style.backgroundColor = "blue";
+      for (let bar of arrayBars) {
+        console.log(bar);
+        bar.style.backgroundColor = "purple";
+      }
     }, i * animationSpeed);
   };
 
