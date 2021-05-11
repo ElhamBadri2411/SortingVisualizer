@@ -8,6 +8,9 @@ import {
   selectionSortAlgorithm,
 } from "./sortingAlgorithims.js";
 
+const ANIMATION_SPEED = 1000; //250 is good for slow setting and 25 bars, 350 bars and  1 for fast paced
+const NUMBER_OF_BARS = 10;
+
 const SortingVisualizer = () => {
   const [array, setArray] = useState([]);
 
@@ -19,7 +22,7 @@ const SortingVisualizer = () => {
 
   const resetArray = () => {
     let tempArray = [];
-    for (let i = 0; i < 15; i++) {
+    for (let i = 0; i < NUMBER_OF_BARS; i++) {
       tempArray.push(getRandomInt(5, 1000));
     }
 
@@ -34,7 +37,6 @@ const SortingVisualizer = () => {
   const bubbleSort = () => {
     const animations = bubbleSortAlgorithm(array);
     const arrayBars = document.getElementsByClassName("array-bar");
-    const animationSpeed = 10; //250 is good for slow setting and 25 bars, 350 bars and  1 for fast paced
 
     for (var i = 0; i < animations.length; i++) {
       const animation = animations[i];
@@ -52,7 +54,7 @@ const SortingVisualizer = () => {
           // this part is to check if we need to compare or to switch the comparison part
           arrayBars[firstBar].style.backgroundColor = color;
           arrayBars[secondBar].style.backgroundColor = color;
-        }, i * animationSpeed);
+        }, i * ANIMATION_SPEED);
       } else {
         // this part happens if we need to switch 2 bars
         if (animation !== false) {
@@ -63,7 +65,7 @@ const SortingVisualizer = () => {
             const secondBarHeight = arrayBars[secondBar].style.height;
             arrayBars[firstBar].style.height = secondBarHeight;
             arrayBars[secondBar].style.height = firstBarHeight;
-          }, i * animationSpeed);
+          }, i * ANIMATION_SPEED);
         }
       }
     }
@@ -73,12 +75,12 @@ const SortingVisualizer = () => {
         console.log(bar);
         bar.style.backgroundColor = "purple";
       }
-    }, i * animationSpeed);
+    }, i * ANIMATION_SPEED);
   };
 
   const insertionSort = () => {
     const animations = insertionSortAlgorithm(array);
-    const animationSpeed = 10; //250 is good for slow setting and 25 bars, 350 bars and  1 for fast paced
+
     for (var i = 0; i < animations.length; i++) {
       const animation = animations[i];
       const arrayBars = document.getElementsByClassName("array-bar");
@@ -100,7 +102,7 @@ const SortingVisualizer = () => {
           // this part is to check if we need to compare or to switch the comparison part
           arrayBars[firstBar].style.backgroundColor = color;
           arrayBars[secondBar].style.backgroundColor = color;
-        }, i * animationSpeed);
+        }, i * ANIMATION_SPEED);
       } else {
         // this part happens if we need to switch 2 bars
         const [firstBar, secondBar] = animation;
@@ -110,7 +112,7 @@ const SortingVisualizer = () => {
           const secondBarHeight = arrayBars[secondBar].style.height;
           arrayBars[firstBar].style.height = secondBarHeight;
           arrayBars[secondBar].style.height = firstBarHeight;
-        }, i * animationSpeed);
+        }, i * ANIMATION_SPEED);
       }
     }
     const arrayBars = document.getElementsByClassName("array-bar");
@@ -119,7 +121,7 @@ const SortingVisualizer = () => {
         console.log(bar);
         bar.style.backgroundColor = "purple";
       }
-    }, i * animationSpeed);
+    }, i * ANIMATION_SPEED);
   };
 
   const selectionSort = (array) => {
