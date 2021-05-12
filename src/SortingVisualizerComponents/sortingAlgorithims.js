@@ -49,10 +49,14 @@ const selectionSortAlgorithm = (inputArray) => {
     // i to size is unsorted portion
 
     // find min of unsorted inputArray
+    animations.push([i, false, 2])
     let min = i;
     for (let j = i + 1; j < len; j++) {
+      animations.push([j, false, 2]);
       if (inputArray[min] > inputArray[j]) {
         min = j;
+      } else {
+        animations.push([j, false, 1])
       }
     }
 
@@ -60,6 +64,7 @@ const selectionSortAlgorithm = (inputArray) => {
     let temp = inputArray[min];
     inputArray[min] = inputArray[i];
     inputArray[i] = temp;
+    animations.push([[min, i], true, 1])
   }
 
   return animations;
