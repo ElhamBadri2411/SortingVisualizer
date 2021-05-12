@@ -54,6 +54,8 @@ const selectionSortAlgorithm = (inputArray) => {
     for (let j = i + 1; j < len; j++) {
       animations.push([j, false, 2]);
       if (inputArray[min] > inputArray[j]) {
+        animations.push([0, "reset", 1])
+        animations.push([j, false, 2]);
         min = j;
       } else {
         animations.push([j, false, 1])

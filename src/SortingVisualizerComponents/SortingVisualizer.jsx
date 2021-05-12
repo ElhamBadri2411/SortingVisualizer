@@ -127,7 +127,6 @@ const SortingVisualizer = () => {
 
     for (var i = 0; i < animations.length; i++) {
       const animation = animations[i];
-     
       let color = animation[2] === 1 ? "blue" : "red";
 
       if (animation[1] === false) {
@@ -135,7 +134,7 @@ const SortingVisualizer = () => {
         setTimeout(() => {
           arrayBars[bar].style.backgroundColor = color;
         }, i * ANIMATION_SPEED);
-      } else {
+      } else if (animation[1] === true) {
         const swap = animation[0];
         const [firstBar, secondBar] = swap;
 
@@ -146,13 +145,13 @@ const SortingVisualizer = () => {
           arrayBars[firstBar].style.height = secondBarHeight;
           arrayBars[secondBar].style.height = firstBarHeight;
         }, i * ANIMATION_SPEED);
+      } else {
+        setTimeout(() => {
+          for (let bar of arrayBars) {
+            bar.style.backgroundColor = "blue";
+          }
+        }, i * ANIMATION_SPEED);
       }
-
-      // setTimeout(() => {
-      //   for (let bar of arrayBars) {
-      //     bar.style.backgroundColor = "blue";
-      //   }
-      // }, i * ANIMATION_SPEED);
     }
   };
   return (
