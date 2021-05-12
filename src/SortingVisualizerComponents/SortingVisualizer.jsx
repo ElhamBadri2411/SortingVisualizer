@@ -1,6 +1,6 @@
 import React from "react";
 import "./SortingVisualizer.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Header from "./Header.jsx";
 import {
   bubbleSortAlgorithm,
@@ -8,11 +8,12 @@ import {
   selectionSortAlgorithm,
 } from "./sortingAlgorithims.js";
 
-const ANIMATION_SPEED = 100; //250 is good for slow setting and 25 bars, 350 bars and  1 for fast paced
-const NUMBER_OF_BARS = 30;
+const NUMBER_OF_BARS = 150; // MAX 150 MIN 15
+const ANIMATION_SPEED = 22000 / (NUMBER_OF_BARS ** 2 + 1) + 1;
 
 const SortingVisualizer = () => {
   const [array, setArray] = useState([]);
+  const [disabled, setDisabled] = useState(false);
 
   function getRandomInt(min, max) {
     min = Math.ceil(min);
@@ -34,6 +35,7 @@ const SortingVisualizer = () => {
   };
 
   const bubbleSort = () => {
+
     const animations = bubbleSortAlgorithm(array);
     const arrayBars = document.getElementsByClassName("array-bar");
 
@@ -73,6 +75,7 @@ const SortingVisualizer = () => {
       for (let bar of arrayBars) {
         bar.style.backgroundColor = "purple";
       }
+      setDisabled(false);
     }, i * ANIMATION_SPEED);
   };
 
@@ -153,6 +156,11 @@ const SortingVisualizer = () => {
         }, i * ANIMATION_SPEED);
       }
     }
+    setTimeout(() => {
+      for (let bar of arrayBars) {
+        bar.style.backgroundColor = "purple";
+      }
+    }, i * ANIMATION_SPEED);
   };
   return (
     <div>
@@ -162,6 +170,7 @@ const SortingVisualizer = () => {
         bubbleSort={bubbleSort}
         selectionSort={selectionSort}
         insertionSort={insertionSort}
+        disabled={disabled}
       />
       <div className="array-container">
         {array.map((value, i) => (

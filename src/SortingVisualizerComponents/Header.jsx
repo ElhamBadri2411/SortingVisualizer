@@ -1,13 +1,27 @@
 import React from "react";
 import "./SortingVisualizer.css";
 
-const Header = ({ resetArray, bubbleSort, selectionSort, insertionSort }) => {
+const Header = ({
+  resetArray,
+  bubbleSort,
+  selectionSort,
+  insertionSort,
+  disabled,
+}) => {
   return (
     <div className="header">
-      <button onClick={resetArray}>Create New Array</button>
-      <button onClick={insertionSort}>Insertion Sort</button>
-      <button onClick={selectionSort}>Selection Sort</button>
-      <button onClick={bubbleSort}>Bubble Sort</button>
+      <button onClick={disabled === false ? resetArray : null}>
+        Create New Array
+      </button>
+      <button onClick={disabled === false ? insertionSort : null}>
+        Insertion Sort
+      </button>
+      <button onClick={disabled === false ? selectionSort : null}>
+        Selection Sort
+      </button>
+      <button onClick={disabled === false ? bubbleSort : null}>
+        Bubble Sort
+      </button>
     </div>
   );
 };
