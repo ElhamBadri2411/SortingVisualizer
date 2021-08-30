@@ -1,14 +1,15 @@
 import React from "react";
 import "./SortingVisualizer.css";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Header from "./Header.jsx";
+import Bars from "./Bars.jsx";
 import {
   bubbleSortAlgorithm,
   insertionSortAlgorithm,
   selectionSortAlgorithm,
 } from "./sortingAlgorithims.js";
 
-const NUMBER_OF_BARS = 150; // MAX 150 MIN 15
+const NUMBER_OF_BARS = 20; // MAX 150 MIN 15
 const ANIMATION_SPEED = 22000 / (NUMBER_OF_BARS ** 2 + 1) + 1;
 
 const SortingVisualizer = () => {
@@ -35,11 +36,12 @@ const SortingVisualizer = () => {
   };
 
   const bubbleSort = () => {
-
     const animations = bubbleSortAlgorithm(array);
     const arrayBars = document.getElementsByClassName("array-bar");
+    //setDisabled(!disabled);
 
     for (var i = 0; i < animations.length; i++) {
+      console.log(disabled);
       const animation = animations[i];
 
       let color = "red";
@@ -75,7 +77,7 @@ const SortingVisualizer = () => {
       for (let bar of arrayBars) {
         bar.style.backgroundColor = "purple";
       }
-      setDisabled(false);
+      //setDisabled(!disabled);
     }, i * ANIMATION_SPEED);
   };
 
@@ -162,6 +164,9 @@ const SortingVisualizer = () => {
       }
     }, i * ANIMATION_SPEED);
   };
+
+  const disableHeader = React.memo(() => {});
+
   return (
     <div>
       <Header
@@ -172,15 +177,7 @@ const SortingVisualizer = () => {
         insertionSort={insertionSort}
         disabled={disabled}
       />
-      <div className="array-container">
-        {array.map((value, i) => (
-          <div
-            className="array-bar"
-            key={i}
-            style={{ height: `${value}px` }}
-          ></div>
-        ))}
-      </div>
+      <Bars array={array} />
     </div>
   );
 };
