@@ -9,7 +9,7 @@ const Header = ({
   disabled,
 }) => {
   return (
-    <div className="header" >
+    <div className={disabled === false ? "header" : "headerDisabled"}>
       <button onClick={disabled === false ? resetArray : null}>
         Create New Array
       </button>
