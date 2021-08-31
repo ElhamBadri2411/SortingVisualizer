@@ -38,7 +38,7 @@ const SortingVisualizer = () => {
   const bubbleSort = () => {
     const animations = bubbleSortAlgorithm(array);
     const arrayBars = document.getElementsByClassName("array-bar");
-    //setDisabled(!disabled);
+    setDisabled(true);
 
     for (var i = 0; i < animations.length; i++) {
       console.log(disabled);
@@ -77,11 +77,12 @@ const SortingVisualizer = () => {
       for (let bar of arrayBars) {
         bar.style.backgroundColor = "purple";
       }
-      //setDisabled(!disabled);
+      setDisabled(false);
     }, i * ANIMATION_SPEED);
   };
 
   const insertionSort = () => {
+    setDisabled(true);
     const animations = insertionSortAlgorithm(array);
 
     for (var i = 0; i < animations.length; i++) {
@@ -123,10 +124,13 @@ const SortingVisualizer = () => {
       for (let bar of arrayBars) {
         bar.style.backgroundColor = "purple";
       }
+
+      setDisabled(false);
     }, i * ANIMATION_SPEED);
   };
 
   const selectionSort = () => {
+    setDisabled(true);
     const animations = selectionSortAlgorithm(array);
     const arrayBars = document.getElementsByClassName("array-bar");
 
@@ -162,10 +166,10 @@ const SortingVisualizer = () => {
       for (let bar of arrayBars) {
         bar.style.backgroundColor = "purple";
       }
+
+      setDisabled(false);
     }, i * ANIMATION_SPEED);
   };
-
-  const disableHeader = React.memo(() => {});
 
   return (
     <div>
