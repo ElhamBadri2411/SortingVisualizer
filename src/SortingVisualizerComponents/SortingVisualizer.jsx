@@ -3,18 +3,18 @@ import "./SortingVisualizer.css";
 import { useState } from "react";
 import Header from "./Header.jsx";
 import Bars from "./Bars.jsx";
+import RangeSlider from "./RangeSlider.jsx";
 import {
   bubbleSortAlgorithm,
   insertionSortAlgorithm,
   selectionSortAlgorithm,
 } from "./sortingAlgorithims.js";
 
-const NUMBER_OF_BARS = 20; // MAX 150 MIN 15
-const ANIMATION_SPEED = 22000 / (NUMBER_OF_BARS ** 2 + 1) + 1;
-
 const SortingVisualizer = () => {
   const [array, setArray] = useState([]);
   const [disabled, setDisabled] = useState(false);
+  const [rangeval, setRangeval] = useState(20);
+  const ANIMATION_SPEED = 20000 / (rangeval ** 2 + 1) + 1;
 
   function getRandomInt(min, max) {
     min = Math.ceil(min);
@@ -24,7 +24,7 @@ const SortingVisualizer = () => {
 
   const resetArray = () => {
     let tempArray = [];
-    for (let i = 0; i < NUMBER_OF_BARS; i++) {
+    for (let i = 0; i < rangeval; i++) {
       tempArray.push(getRandomInt(5, 1000));
     }
 
@@ -179,6 +179,11 @@ const SortingVisualizer = () => {
         bubbleSort={bubbleSort}
         selectionSort={selectionSort}
         insertionSort={insertionSort}
+        disabled={disabled}
+      />
+      <RangeSlider
+        setRangeval={setRangeval}
+        rangeval={rangeval}
         disabled={disabled}
       />
       <Bars array={array} />
