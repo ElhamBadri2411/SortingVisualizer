@@ -8,6 +8,7 @@ const Header = ({
   insertionSort,
   disabled,
 }) => {
+  // disables header while sorting algorithm is running
   return (
     <div className={disabled === false ? "header" : "headerDisabled"}>
       <button onClick={disabled === false ? resetArray : null}>
